@@ -1,7 +1,7 @@
 import hikari
 
 #hiding token
-tokenFile = open('TOKEN', r)
+tokenFile = open('TOKEN', 'r')
 token = tokenFile.readline()
 tokenFile.close()
 
