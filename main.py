@@ -1,3 +1,4 @@
+from turtle import color
 import hikari
 import lightbulb
 import discord
@@ -26,7 +27,7 @@ async def print_message(event):
 @lightbulb.command('socials', 'Displays the socials')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def ping(ctx):
-    embed = hikari.Embed(title="Socials!", description="Here are the socials")
+    embed = hikari.Embed(title="Socials!", description="Here are the socials", color=0x1122FF)
     embed.add_field(name="Instagram", value="Ig link here")
     embed.add_field(name="Facebook", value="Fb link here")
     embed.add_field(name="Twitter", value="Tw link here")
