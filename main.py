@@ -1,8 +1,5 @@
-from turtle import color
 import hikari
 import lightbulb
-import discord
-import turtle
 
 #tokenfile
 tokenFile = open('TOKEN', 'r')
@@ -29,10 +26,9 @@ async def print_message(event):
 @lightbulb.implements(lightbulb.SlashCommand)
 async def ping(ctx):
     embed = discord.Embed(title="Socials!", description="Here are the socials")
-    embed.add_field(name="Instagram", value="Ig link here")
-    embed.add_field(name="Facebook", value="Fb link here")
-    embed.add_field(name="Twitter", value="Tw link here")
-
-    await ctx.respond(embed = embed)
+    embed.add_field(name="Instagram", value="link")
+    embed.add_field(name="Instagram", value="link")
+    embed.add_field(name="Instagram", value="link")
+    await ctx.respond(embed=embed)
 
 bot.run()
