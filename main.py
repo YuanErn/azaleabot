@@ -12,12 +12,9 @@ bot = lightbulb.BotApp(token, default_enabled_guilds = (999584580019441728))
 async def print_message(event):
     print(event.content)
 
-@bot.listen(hikari.StartedEvent)
-async def on_started():
-    print("The bot is ready")
-    print("------------------------")
-    user = await client.fetch_user("369252632147001354")
-    await user.send("hello")
+@client.event
+async def on_ready():
+   await client.get_channel("enter channel id here").send("bot is online")
 
 @bot.command
 @lightbulb.command('ping', 'Replies with pong')
