@@ -26,7 +26,7 @@ async def print_message(event):
 @lightbulb.command('socials', 'Displays the socials')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def ping(ctx):
-    embed = discord.Embed(title="Socials!", description="Here are the socials")
+    embed = hikari.Embed(title="Socials!", description="Here are the socials")
     embed.add_field(name="Instagram", value="link")
     embed.add_field(name="Instagram", value="link")
     embed.add_field(name="Instagram", value="link")
