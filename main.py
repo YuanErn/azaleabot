@@ -6,7 +6,7 @@ tokenFile = open('TOKEN', 'r')
 token = tokenFile.readline()
 tokenFile.close()
 
-guildfile
+#guildfile
 guildFile = open('GUILDS', 'r')
 guilds  = guildFile.readline()
 guildFile.close()
