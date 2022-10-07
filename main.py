@@ -1,5 +1,6 @@
-import lightbulb
 import hikari
+import lightbulb
+
 
 tokenFile = open('TOKEN', 'r')
 token = tokenFile.readline()
@@ -15,11 +16,11 @@ async def print_message(event):
 async def on_started(event):
     print ('Bot has started')
 
-@bot.command
-@lightbulb.command('Ping', 'Replies with pong')
-@lightbulb.implements(lightbulb.SlashCommand)
-async def ping(ctx):
-    await ctx.respond('Pong!')
+# @bot.command
+# @lightbulb.command('Ping', 'Replies with pong')
+# @lightbulb.implements(lightbulb.SlashCommand)
+# async def ping(ctx):
+#     await ctx.respond('Pong!')
 
 
 bot.run()
