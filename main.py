@@ -14,7 +14,7 @@ async def print_message(event):
 
 @bot.listen(hikari.StartedEvent)
 async def on_started(event):
-    await event.respond('Bot has started!')
+    print ('Bot has started!')
 
 @bot.command
 @lightbulb.command('ping', 'Replies with pong')
