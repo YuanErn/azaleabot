@@ -31,6 +31,6 @@ async def ping(ctx):
     embed.add_field(name="Facebook", value="Fb link here")
     embed.add_field(name="Twitter", value="Tw link here")
 
-    await ctx.send(embed = embed)
+    await ctx.respond(embed = embed)
 
 bot.run()
