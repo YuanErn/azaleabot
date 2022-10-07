@@ -8,12 +8,12 @@ token = tokenFile.readline()
 tokenFile.close()
 
 #guildfile
-guildFile = open('GUILDS', 'r')
-guilds  = guildFile.readline()
-guildFile.close()
+# guildFile = open('GUILDS', 'r')
+# guilds  = guildFile.readline()
+# guildFile.close()
 
 #initialisation
-bot = lightbulb.BotApp(token, default_enabled_guilds = (guilds))
+bot = lightbulb.BotApp(token, default_enabled_guilds = (999584580019441728))
 
 @bot.listen(hikari.GuildMessageCreateEvent)
 async def print_message(event):
