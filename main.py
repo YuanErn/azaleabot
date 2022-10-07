@@ -13,8 +13,11 @@ async def print_message(event):
     print(event.content)
 
 @bot.listen(hikari.StartedEvent)
-async def on_started(event):
-    print ('Bot has started!')
+async def on_started():
+    print("The bot is ready")
+    print("------------------------")
+    user = await client.fetch_user("369252632147001354")
+    await user.send("hello")
 
 @bot.command
 @lightbulb.command('ping', 'Replies with pong')
