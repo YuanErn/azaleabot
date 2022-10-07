@@ -1,16 +1,4 @@
-import discord
-from discord.ext import commands
+import hikari
 
-bot = commands.Bot(command_prefix="!")
-
-
-@bot.event
-async def on_ready():
-    print(f"Logged in as {bot.user}")
-
-
-@bot.command()
-async def hello(ctx):
-    await ctx.send("Hello, I am a robot")
-
-bot.run("Token")
+bot = hikari.GatewayBot(token='MTAyNzY4NDQ5NDg2MzUwMzQ5Mw.GCi9AT.3ZQ6PIT1h61pzTIJskZIKkp-sWfg6rRU-ZkCF8')
+bot.run()
