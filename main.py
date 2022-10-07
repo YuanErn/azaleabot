@@ -19,10 +19,6 @@ bot = lightbulb.BotApp(token, default_enabled_guilds = (guilds))
 async def print_message(event):
     print(event.content)
 
-@client.event
-async def on_ready():
-    print("online")
-    
 
 @bot.command
 @lightbulb.command('socials', 'Displays the socials')
