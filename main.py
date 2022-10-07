@@ -2,12 +2,18 @@ import hikari
 import lightbulb
 import social_ping
 
-
+#tokenfile
 tokenFile = open('TOKEN', 'r')
 token = tokenFile.readline()
 tokenFile.close()
 
-bot = lightbulb.BotApp(token, default_enabled_guilds = (999584580019441728))
+#guildfile
+guildFile = open('GUILDS', 'r')
+guilds  = guildFile.readline()
+guildFile.close()
+
+#initialisation
+bot = lightbulb.BotApp(token, default_enabled_guilds = (guilds))
 
 @bot.listen(hikari.GuildMessageCreateEvent)
 async def print_message(event):
