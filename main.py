@@ -14,7 +14,7 @@ guildFile.close()
 #initialisation
 bot = lightbulb.BotApp(
     token, 
-    default_enabled_guilds = (guilds)
+    guilds
     )
 
 @bot.listen(hikari.GuildMessageCreateEvent)
