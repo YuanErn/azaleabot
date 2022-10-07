@@ -1,5 +1,6 @@
 import hikari
 import lightbulb
+import discord
 
 #tokenfile
 tokenFile = open('TOKEN', 'r')
