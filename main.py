@@ -1,4 +1,5 @@
 import lightbulb
+import hikari
 
 tokenFile = open('TOKEN', 'r')
 token = tokenFile.readline()
@@ -12,5 +13,5 @@ async def print_message(event):
 @bot.listen(hikari.StartedEvent)
 async def on_started(event):
     print ('Bot has started')
-    
+
 bot.run()
