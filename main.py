@@ -1,5 +1,6 @@
 import hikari
 import lightbulb
+import social_ping
 
 
 tokenFile = open('TOKEN', 'r')
