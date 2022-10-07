@@ -5,8 +5,9 @@ token = tokenFile.readline()
 tokenFile.close()
 bot = hikari.GatewayBot(token)
 
-@bot.listen(hikari.StartedEvent)
-async def bot_started(event):
-    print("Bot is online")
+@bot.listen(hikari.GuildMessageCreateEvent)
+async def print_message(event):
+    print(event.content)
+
 
 bot.run()
