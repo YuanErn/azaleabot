@@ -25,6 +25,11 @@ async def print_message(event):
 @lightbulb.command('socials', 'Displays the socials')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def ping(ctx):
-    await ctx.respond("hello")
+    embed = discord.Embed(title="Socials!", description="Here are the socials", color=discord.Colour.blue())
+    embed.add_field(name="Instagram", value="Ig link here")
+    embed.add_field(name="Facebook", value="Fb link here")
+    embed.add_field(name="Twitter", value="Tw link here")
+
+    await ctx.send(embed = embed)
 
 bot.run()
