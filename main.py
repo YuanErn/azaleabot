@@ -14,7 +14,7 @@ async def print_message(event):
 
 @bot.listen(hikari.StartedEvent)
 async def on_started(event):
-    print ('Bot has started')
+    await event.respond('Bot has started!')
 
 @bot.command
 @lightbulb.command('ping', 'Replies with pong')
@@ -22,5 +22,10 @@ async def on_started(event):
 async def ping(ctx):
     await ctx.respond('Pong!')
 
+@bot.command
+@lightbulb.command('group', 'This is a group')
+@lightbulb.implements(lightbulb.SlashCommandGroup)
+async def my_group(ctx):
+    pass
 
 bot.run()
