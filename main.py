@@ -1,6 +1,7 @@
 import hikari
 import lightbulb
 import discord
+from discord.ext import commands
 
 #tokenfile
 tokenFile = open('TOKEN', 'r')
@@ -25,7 +26,7 @@ async def print_message(event):
 @bot.command
 @lightbulb.command('socials', 'Displays the socials')
 @lightbulb.implements(lightbulb.SlashCommand)
-async def ping(ctx):
+async def embed(ctx):
     embed = discord.Embed(title="Socials!", description="Here are the socials", color=discord.Colour.random())
     embed.add_field(name="Instagram", value="Ig link here")
     embed.add_field(name="Facebook", value="Fb link here")
