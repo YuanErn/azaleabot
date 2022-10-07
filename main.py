@@ -12,7 +12,7 @@ bot = lightbulb.BotApp(token, default_enabled_guilds = (999584580019441728))
 async def print_message(event):
     print(event.content)
 
-@client.event
+@bot.event
 async def on_ready():
    await client.get_channel("enter channel id here").send("bot is online")
 
