@@ -23,7 +23,7 @@ bot = lightbulb.BotApp(
 #status
 @bot.event
 async def on_ready():
-    activity = discord.Game(name="VALORANT", type=3)
+    activity = discord.Game('VALORANT')
     await bot.change_presence(status=discord.Status.busy, activity=activity)
     print("Bot is ready!")
 
