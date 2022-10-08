@@ -1,6 +1,8 @@
 import hikari
 import lightbulb
 import discord
+from discord.ext.commands import Bot
+from discord.ext.commands import Context
 
 #tokenfile
 tokenFile = open('TOKEN', 'r')
