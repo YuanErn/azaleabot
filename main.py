@@ -18,6 +18,13 @@ bot = lightbulb.BotApp(
     guilds
     )
 
+#status
+@bot.event
+async def on_ready():
+    activity = discord.Game(name="VALORANT", type=3)
+    await bot.change_presence(status=discord.Status.busy, activity=activity)
+    print("Bot is ready!")
+
 @bot.listen(hikari.GuildMessageCreateEvent)
 async def print_message(event):
     print(event.content)
