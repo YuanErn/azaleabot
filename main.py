@@ -30,14 +30,14 @@ bot = lightbulb.BotApp(
 async def print_message(event):
     print(event.content)
 
-# @bot.command
-# @lightbulb.command('socials', 'Displays the socials')
-# @lightbulb.implements(lightbulb.SlashCommand)
-# async def ping(ctx):
-#     embed = hikari.Embed(title="Socials!", description="Here are the socials", color=0x0fff000)
-#     embed.add_field(name="Instagram", value="link")
-#     embed.add_field(name="Instagram", value="link")
-#     embed.add_field(name="Instagram", value="link")
-#     await ctx.respond(embed=embed)
+@bot.command
+@lightbulb.command('socials', 'Displays the socials')
+@lightbulb.implements(lightbulb.SlashCommand)
+async def ping(ctx):
+    embed = hikari.Embed(title="Socials!", description="Here are the socials", color=0x0fff000)
+    embed.add_field(name="Tiktok", value="[Here is the link](https://www.tiktok.com/@adrenaline_esports?lang=en)")
+    embed.add_field(name="Instagram", value="link")
+    embed.add_field(name="Instagram", value="link")
+    await ctx.respond(embed=embed)
 
 bot.run()
