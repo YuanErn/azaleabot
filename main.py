@@ -1,8 +1,6 @@
 import hikari
 import lightbulb
 import discord
-from discord.ext.commands import Bot
-from discord.ext.commands import Context
 
 #tokenfile
 tokenFile = open('TOKEN', 'r')
@@ -20,12 +18,6 @@ bot = lightbulb.BotApp(
     guilds
     )
 
-#status
-# @bot.event
-# async def on_ready():
-#     await bot.change_presence(activity=discord.Game(name="VALORANT"))
-#     print("Bot is ready!")
-
 @bot.listen(hikari.GuildMessageCreateEvent)
 async def print_message(event):
     print(event.content)
@@ -41,5 +33,11 @@ async def ping(ctx):
     embed.add_field(name="Twitch", value="[Here is the link!](https://www.twitch.tv/adrenaline_esports_apac)")
     embed.add_field(name="Facebook", value="[Here is the link!](https://www.facebook.com/profile.php?id=100086242737895)")
     await ctx.respond(embed=embed)
+
+@bot.command
+@lightbulb.command('signup', 'Sends the signup form straight to your dms')
+@lightbulb.implements(lightbulb.SlashCommand)
+async def ping(ctx):
+    exec(open('signup.py').read())
 
 bot.run()
