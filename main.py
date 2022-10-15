@@ -41,7 +41,7 @@ async def handle_message(event):
     logfile = open("chatlogging.txt", "a")
     msgContent = event.content
     if msgContent == None:
-        logfile.write("https://discord.com/channels/{0}/{1}/{2}\n".format(int(event.guild_id), int(event.channel_id), int))
+        logfile.write("https://discord.com/channels/{0}/{1}/{2}\n".format(int(event.guild_id), int(event.channel_id), int(event.message_id)))
 
     else:   
         logfile.write("{0} said| {1} |in channel:{2}\n".format(str(event.author), (event.content), str(event.channel_id)))
