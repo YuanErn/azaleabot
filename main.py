@@ -40,7 +40,7 @@ async def ping(ctx):
 async def handle_message(event):
     logfile = open("chatlogging.txt", "a")
     if event.content == None:
-        logfile.write(event.message.attachments[0].url)
+        logfile.write("{0} said| {1} |in channel:{2}\n".format(str(event.author), (event.message.attachments[0].url), str(event.channel_id)))
 
     else:   
         logfile.write("{0} said| {1} |in channel:{2}\n".format(str(event.author), (event.content), str(event.channel_id)))
