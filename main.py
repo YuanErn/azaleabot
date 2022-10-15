@@ -38,12 +38,9 @@ async def ping(ctx):
 #logs the server's chats
 @bot.listen(hikari.GuildMessageCreateEvent)
 async def handle_message(event):
-    Author = event.author
-    Content = event.content
-    Channel_id = event.channel_id
-    Guild_id = event.guild_id
     logfile = open("chatlogging.txt", "a")
     logfile.write("{0} said| {1} |in channel:{2}\n".format(str(event.author), str(event.content), str(event.channel_id)))
     logfile.close()
+
 
 bot.run()
