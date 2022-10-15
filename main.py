@@ -41,7 +41,7 @@ async def handle_message(event):
     Author = event.author
     Content = event.content
     Channel_id = event.channel_id
-    Guild_id = guild_id
+    Guild_id = event.guild_id
     print(Author, " said ", Content, " on ", Channel_id, " ", Guild_id)
 
 bot.run()
