@@ -40,7 +40,7 @@ async def ping(ctx):
 async def handle_message(event):
     logfile = open("chatlogging.txt", "a")
     msgContent = event.content
-    if msgContent == "None":
+    if msgContent == None:
         logfile.write("https://discord.com/channels/{0}/{1}/{2}\n".format(int(event.guild_id), int(event.channel_id), int))
 
     else:   
