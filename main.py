@@ -34,7 +34,7 @@ async def print_message(event):
 @lightbulb.command('socials', 'Displays the socials')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def ping(ctx):
-    embed = hikari.Embed(title="Socials!", description="Here are the socials", color=0xe91e63)
+    embed = hikari.Embed(title="Socials!", description="Here are the socials", color=0x9b59b6)
     embed.add_field(name="Tiktok", value="[Here is the link!](https://www.tiktok.com/@adrenaline_esports)")
     embed.add_field(name="Instagram", value="[Here is the link!](https://www.instagram.com/adll.esports)")
     embed.add_field(name="Twitter", value="[Here is the link!](https://twitter.com/ADL_Esports)")
