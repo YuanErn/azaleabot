@@ -14,7 +14,7 @@ guildFile.close()
 
 #initialisation
 bot = lightbulb.BotApp(
-    token, 
+    token,
     guilds
     )
 
@@ -43,9 +43,9 @@ async def handle_message(event):
     logfile.close()
 
 #sends initialise message
-@bot.listen(hikari.StartedEvent)
-async def on_started(event: hikari.StartingEvent) -> None:
-    messageChannel = 1000130776358195330
-    await (await bot.rest.fetch_channel(messageChannel).send("I'm online!"))
+# @bot.listen(hikari.StartedEvent)
+# async def on_started(event: hikari.StartingEvent) -> None:
+#     messageChannel = 1000130776358195330
+#     await (await bot.rest.fetch_channel(messageChannel).send("I'm online!"))
 
 bot.run()
