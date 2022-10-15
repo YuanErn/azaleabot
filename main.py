@@ -43,7 +43,7 @@ async def handle_message(event):
     Channel_id = event.channel_id
     Guild_id = event.guild_id
     logfile = open("chatlogging.txt", "a")
-    logfile.write("{0} said ""{1}"" in channel:{2}\n".format(str(event.author), str(event.content), str(event.channel_id)))
+    logfile.write("{0} said| {1} |in channel:{2}\n".format(str(event.author), str(event.content), str(event.channel_id)))
     logfile.close()
 
 bot.run()
