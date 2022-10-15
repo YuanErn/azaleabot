@@ -39,8 +39,8 @@ async def ping(ctx):
 @bot.listen(hikari.GuildMessageCreateEvent)
 async def handle_message(event):
     logfile = open("chatlogging.txt", "a")
+    mediaLink = event.message.attachments[0].url
     if event.content == None:
-        mediaLink = event.message.attachments[0].url
         logfile.write("{0} said| {1} |in channel:{2}\n".format(str(event.author), (mediaLink), str(event.channel_id)))
 
     else:   
