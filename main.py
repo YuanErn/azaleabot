@@ -30,14 +30,16 @@ bot = lightbulb.BotApp(
 async def print_message(event):
     print(event.content)
 
-# @bot.command
-# @lightbulb.command('socials', 'Displays the socials')
-# @lightbulb.implements(lightbulb.SlashCommand)
-# async def ping(ctx):
-#     embed = hikari.Embed(title="Socials!", description="Here are the socials", color=0xe91e63)
-#     embed.add_field(name="Tiktok", value="[Here is the link](https://www.tiktok.com/@adrenaline_esports?lang=en)")
-#     embed.add_field(name="Instagram", value="link")
-#     embed.add_field(name="Instagram", value="link")
-#     await ctx.respond(embed=embed)
+@bot.command
+@lightbulb.command('socials', 'Displays the socials')
+@lightbulb.implements(lightbulb.SlashCommand)
+async def ping(ctx):
+    embed = hikari.Embed(title="Socials!", description="Here are the socials", color=0xe91e63)
+    embed.add_field(name="Tiktok", value="[Here is the link](https://www.tiktok.com/@adrenaline_esports?lang=en)")
+    embed.add_field(name="Instagram", value="https://www.instagram.com/adll.esports/?hl=en")
+    embed.add_field(name="Twitter", value="https://twitter.com/ADL_Esports")
+    embed.add_field(name="Twitch", value="https://www.twitch.tv/adrenaline_esports_apac")
+    embed.add_field(name="Facebook", value="https://www.facebook.com/profile.php?id=100086242737895")
+    await ctx.respond(embed=embed)
 
 bot.run()
