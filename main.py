@@ -39,7 +39,7 @@ async def ping(ctx):
 @bot.listen(hikari.GuildMessageCreateEvent)
 async def handle_message(event):
     logfile = open("chatlogging.txt", "a")
-    if msgContent == None:
+    if event.content == None:
         logfile.write(event.message.attachments[0].url)
 
     else:   
