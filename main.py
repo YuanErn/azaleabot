@@ -43,7 +43,7 @@ async def handle_message(event):
     if event.content == None:
         logfile.write("{0} said| {1} |in channel:{2}\n".format(str(event.author), (mediaLink), str(event.channel_id)))
 
-    elif mediaLink != "":
+    elif mediaLink != " ":
        logfile.write("{0} said| {1} |in channel:{2}, mediaAttached:{3}\n".format(str(event.author), str(event.content), str(event.channel_id), (mediaLink)))
     
     else:
