@@ -43,7 +43,7 @@ async def handle_message(event):
     Channel_id = event.channel_id
     Guild_id = event.guild_id
     logfile = open('chatlogging.txt', 'w')
-    logfile.write(Content)
+    logfile.write(Author, Content)
     logfile.close()
     print(Author, " said ", Content, " on ", "Channel:", Channel_id, " ", "Server:", Guild_id)
 
