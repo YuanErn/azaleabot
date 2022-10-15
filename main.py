@@ -35,7 +35,7 @@ async def ping(ctx):
     embed.add_field(name="Facebook", value="[Here is the link!](https://www.facebook.com/profile.php?id=100086242737895)")
     await ctx.respond(embed=embed)
 
-#this keeps the logs clean
+#logs the server's chats
 @bot.listen(hikari.GuildMessageCreateEvent)
 async def handle_message(event):
     Author = event.author
@@ -43,8 +43,7 @@ async def handle_message(event):
     Channel_id = event.channel_id
     Guild_id = event.guild_id
     logfile = open("chatlogging.txt", "a")
-    logfile.write("{0} said {1}\n".format(str(event.author), str(event.content)))
+    logfile.write("{0} said {1} in channel:{3}\n".format(str(event.author), str(event.content), str(event.channel_id)))
     logfile.close()
-    print(Author, " said ", Content, " on ", "Channel:", Channel_id, " ", "Server:", Guild_id)
 
 bot.run()
