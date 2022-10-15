@@ -45,6 +45,6 @@ async def handle_message(event):
 #sends initialise message
 @bot.listen(hikari.StartedEvent)
 async def on_started(event: hikari.StartingEvent) -> None:
-    await (await bot.rest.fetch_channel(1000130776358195330).send("I'm online!"))
-    
+    await (await bot.rest.fetch_channel("1000130776358195330").send("I'm online!"))
+
 bot.run()
