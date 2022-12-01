@@ -18,7 +18,7 @@ async def twitchCheck() -> None:
                 pass
 
             else:
-                onlineList.append
+                onlineList.append()
                 print(channelName + ' is live')
                 print(onlineList)
 
