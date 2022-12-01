@@ -8,21 +8,24 @@ daily_plugin = lightbulb.Plugin("Daily")
 onlineList = []
 
 async def twitchCheck() -> None:
-    channelName = '39daph'
+    global onlineList 
+    streamerFile = open('STREAMERS', 'r')
+    for streamlist in range(4):
+        channelName = streamerFile.readline()
 
-    contents = requests.get('https://www.twitch.tv/' +channelName).content.decode('utf-8')
+        contents = requests.get('https://www.twitch.tv/' +channelName).content.decode('utf-8')
 
-    if 'isLiveBroadcast' in contents: 
-        if channelName in onlineList:
-            pass
+        if 'isLiveBroadcast' in contents: 
+            if channelName in onlineList:
+                pass
 
+            else:
+                onlineList.append(channelName)
+                print(channelName + ' is live')
+                print(onlineList)
         else:
-            onlineList.append(channelName)
-            print(channelName + ' is live')
-            print(onlineList)
-    else:
-        onlineList.remove(channelName)
-        print(channelName + ' is not live')
+            onlineList.remove(channelName)
+            print(channelName + ' is not live')
 
 @daily_plugin.listener(hikari.StartedEvent)
 async def on_started(_: hikari.StartedEvent) -> None:
