@@ -9,7 +9,7 @@ tokenFile.close()
 
 #initialisation
 bot = lightbulb.BotApp(
-    token,
+    token
     )
 
 @bot.listen(hikari.GuildMessageCreateEvent)
