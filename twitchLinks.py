@@ -8,7 +8,7 @@ daily_plugin = lightbulb.Plugin("Daily")
 onlineList = []
 
 async def twitchCheck() -> None:
-    streamFile = open('STREAMERS.txt', 'r')
+    streamFile = open('STREAMERS', 'r')
     for x in range(4):
         channelName = streamFile.readline()
         contents = requests.get('https://www.twitch.tv/' +channelName).content.decode('utf-8')
@@ -21,7 +21,7 @@ async def twitchCheck() -> None:
                 onlineList.append
                 print(channelName + ' is live')
                 print(onlineList)
-                
+
         else:
             onlineList.remove(channelName)
             print(channelName + ' is not live')
