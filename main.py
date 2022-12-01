@@ -1,6 +1,12 @@
 import hikari
 import lightbulb
+import os
+import json
+import requests
 import discord
+from discord.ext import tasks, commands
+from twitchAPI.twitch import Twitch
+from discord.utils import get
 
 #tokenfile
 tokenFile = open('TOKEN', 'r')
