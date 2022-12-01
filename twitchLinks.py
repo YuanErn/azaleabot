@@ -23,8 +23,9 @@ async def twitchCheck() -> None:
                 print(onlineList)
 
         else:
-            onlineList.remove(channelName)
             print(channelName + ' is not live')
+            if onlineList != '':
+                onlineList.remove(channelName)
 
     streamFile.close()
 
