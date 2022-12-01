@@ -6,12 +6,8 @@ from apscheduler.triggers.cron import CronTrigger
 
 daily_plugin = lightbulb.Plugin("Daily")
 onlineList = []
+channel = 1047747366754734140
 
-tokenFile = open('TOKEN', 'r')
-token = tokenFile.readline()
-tokenFile.close()
-
-bot = hikari.GatewayBot(token)
 
 async def twitchCheck() -> None:
     streamFile = open('STREAMERS', 'r')
@@ -25,7 +21,9 @@ async def twitchCheck() -> None:
 
             else:
                 onlineList.append(channelName)
-                await bot.rest.create_message(1047747366754734140, "hello bitches")
+                await channel.send(
+                                "hello we online"
+                                f"\nhttps://www.twitch.tv/{channelName}")
 
         else:
             try:
