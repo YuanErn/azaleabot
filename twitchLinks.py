@@ -5,7 +5,7 @@ from apscheduler.triggers.cron import CronTrigger
 
 
 daily_plugin = lightbulb.Plugin("Daily")
-streamerList = ['39daph', 'prxd4v41', 'bunniejin', 'sinatraa']
+streamerList = ['prxd4v41', '39daph', 'bunniejin', 'sinatraa']
 onlineList = []
 
 async def twitchCheck() -> None:
