@@ -7,6 +7,12 @@ from apscheduler.triggers.cron import CronTrigger
 daily_plugin = lightbulb.Plugin("Daily")
 onlineList = []
 
+tokenFile = open('TOKEN', 'r')
+token = tokenFile.readline()
+tokenFile.close()
+
+bot = hikari.GatewayBot(token)
+
 async def twitchCheck() -> None:
     streamFile = open('STREAMERS', 'r')
     for x in range(5):
