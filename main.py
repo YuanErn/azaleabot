@@ -7,15 +7,9 @@ tokenFile = open('TOKEN', 'r')
 token = tokenFile.readline()
 tokenFile.close()
 
-#guildfile
-guildFile = open('GUILDS', 'r')
-guilds  = guildFile.readline()
-guildFile.close()
-
 #initialisation
 bot = lightbulb.BotApp(
     token,
-    guilds
     )
 
 @bot.listen(hikari.GuildMessageCreateEvent)
@@ -62,12 +56,5 @@ async def on_starting(_: hikari.StartingEvent) -> None:
     bot.load_extensions("twitchLinks")
 
 
-
-
-#sends initialise message
-# @bot.listen(hikari.StartedEvent)
-# async def on_started(event: hikari.StartingEvent) -> None:
-#     messageChannel = 1000130776358195330
-#     await (await bot.rest.fetch_channel(messageChannel).send("I'm online!"))
 
 bot.run()
