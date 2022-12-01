@@ -9,7 +9,7 @@ onlineList = []
 
 async def twitchCheck() -> None:
     global onlineList 
-    streamerFile = open('STREAMERS', 'r')
+    streamerFile = open('STREAMERS.txt', 'r')
     for streamlist in range(4):
         channelName = streamerFile.readline()
 
