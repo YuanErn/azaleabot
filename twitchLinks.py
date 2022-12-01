@@ -5,27 +5,28 @@ from apscheduler.triggers.cron import CronTrigger
 
 
 daily_plugin = lightbulb.Plugin("Daily")
-streamerList = ['prxd4v41', '39daph', 'bunniejin', 'sinatraa']
 onlineList = []
 
 async def twitchCheck() -> None:
-    global onlineList 
-    for index in range(4):
-        streamer = streamerList[index]
-        contents = requests.get('https://www.twitch.tv/' +streamer).content.decode('utf-8')
+    streamFile = open('STREAMERS.txt', 'r')
+    for x in range(4):
+        channelName = streamFile.readline()
+        contents = requests.get('https://www.twitch.tv/' +channelName).content.decode('utf-8')
 
         if 'isLiveBroadcast' in contents: 
-            if streamer in onlineList:
+            if channelName in onlineList:
                 pass
 
             else:
-                onlineList.append(streamer)
-                print(streamer + ' is live')
+                onlineList.append
+                print(channelName + ' is live')
                 print(onlineList)
+                
         else:
-            onlineList.remove(streamer)
-            print(streamer + ' is not live')
-    
+            onlineList.remove(channelName)
+            print(channelName + ' is not live')
+
+    streamFile.close()
 
 @daily_plugin.listener(hikari.StartedEvent)
 async def on_started(_: hikari.StartedEvent) -> None:
