@@ -1,7 +1,6 @@
 import hikari
 import lightbulb
-from twitchLinks import twitchLink
-from apscheduler.triggers.cron import CronTrigger
+from apscheduler.schedulers.asyncio import AsyncIOScheduler
 
 #tokenfile
 tokenFile = open('TOKEN', 'r')
