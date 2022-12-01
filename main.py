@@ -1,12 +1,7 @@
 import hikari
 import lightbulb
-import os
-import json
-import requests
-import discord
-from discord.ext import tasks, commands
-from twitchAPI.twitch import Twitch
-from discord.utils import get
+from twitchLinks import twitchLink
+from apscheduler.triggers.cron import CronTrigger
 
 #tokenfile
 tokenFile = open('TOKEN', 'r')
@@ -58,6 +53,16 @@ async def handle_message(event):
                 logfile.write("{0} said| {1} |in channel:{2}\n".format(str(event.author), str(event.content), str(event.channel_id)))
 
     logfile.close()
+
+#Twitch implementation
+@bot.listen(hikari.StartingEvent)
+async def on_starting(_: hikari.StartingEvent) -> None:
+    # This event fires once, while the BotApp is starting.
+    bot.d.sched = AsyncIOScheduler()
+    bot.d.sched.start()
+    bot.load_extensions("twitchLinks")
+
+
 
 
 #sends initialise message
