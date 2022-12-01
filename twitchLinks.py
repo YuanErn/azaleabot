@@ -9,10 +9,9 @@ onlineList = []
 
 async def twitchCheck() -> None:
     global onlineList 
-    streamerFile = open('STREAMERS.txt', 'r')
+    streamerFile = open('STREAMERS', 'r')
     for streamlist in range(4):
         channelName = streamerFile.readline()
-
         contents = requests.get('https://www.twitch.tv/' +channelName).content.decode('utf-8')
 
         if 'isLiveBroadcast' in contents: 
@@ -26,6 +25,8 @@ async def twitchCheck() -> None:
         else:
             onlineList.remove(channelName)
             print(channelName + ' is not live')
+    
+    streamerFile.close()
 
 @daily_plugin.listener(hikari.StartedEvent)
 async def on_started(_: hikari.StartedEvent) -> None:
