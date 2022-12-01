@@ -10,21 +10,21 @@ onlineList = []
 async def twitchCheck() -> None:
     global onlineList 
     streamerFile = open('STREAMERS', 'r')
-    for streamlist in range(4):
-        channelName = streamerFile.readline()
-        contents = requests.get('https://www.twitch.tv/' +channelName).content.decode('utf-8')
+    for streamer in streamerFile:
+        #streamer = streamerFile.readline()
+        contents = requests.get('https://www.twitch.tv/' +streamer).content.decode('utf-8')
 
         if 'isLiveBroadcast' in contents: 
-            if channelName in onlineList:
+            if streamer in onlineList:
                 pass
 
             else:
-                onlineList.append(channelName)
-                print(channelName + ' is live')
+                onlineList.append(streamer)
+                print(streamer + ' is live')
                 print(onlineList)
         else:
-            onlineList.remove(channelName)
-            print(channelName + ' is not live')
+            onlineList.remove(streamer)
+            print(streamer + ' is not live')
     
     streamerFile.close()
 
