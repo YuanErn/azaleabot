@@ -10,7 +10,7 @@ onlineList = []
 async def twitchCheck() -> None:
     streamFile = open('STREAMERS', 'r')
     for x in range(4):
-        channelName = streamFile.readline()
+        channelName = streamFile.readline().strip()
         contents = requests.get('https://www.twitch.tv/' +channelName).content.decode('utf-8')
 
         if 'isLiveBroadcast' in contents: 
