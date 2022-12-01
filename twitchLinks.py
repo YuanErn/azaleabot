@@ -20,6 +20,7 @@ async def twitchCheck() -> None:
 
             else:
                 onlineList.append(channelName)
+                await daily_plugin.app.rest.create_message(1047747366754734140, "Hello")
 
         else:
             try:
