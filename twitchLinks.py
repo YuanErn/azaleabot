@@ -9,7 +9,7 @@ onlineList = []
 
 async def twitchCheck() -> None:
     streamFile = open('STREAMERS', 'r')
-    for x in range(4):
+    for x in range(5):
         channelName = streamFile.readline().strip()
         contents = requests.get('https://www.twitch.tv/' +channelName).content.decode('utf-8')
 
@@ -20,7 +20,6 @@ async def twitchCheck() -> None:
             else:
                 onlineList.append(channelName)
                 print(channelName + ' is live')
-                print(onlineList)
 
         else:
             print(channelName + ' is not live')
