@@ -2,7 +2,6 @@ import requests
 import hikari
 import lightbulb
 from apscheduler.triggers.cron import CronTrigger
-from main import bot
 
 daily_plugin = lightbulb.Plugin("Daily")
 onlineList = []
@@ -21,7 +20,6 @@ async def twitchCheck() -> None:
 
             else:
                 onlineList.append(channelName)
-                await bot.rest.create_message(1047747366754734140, "hello gs")
 
         else:
             try:
