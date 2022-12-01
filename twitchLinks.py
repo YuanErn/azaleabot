@@ -19,10 +19,9 @@ async def twitchCheck() -> None:
 
             else:
                 onlineList.append(channelName)
-                print(channelName + ' is live')
+                await bot.rest.create_message(1047747366754734140, "hello bitches")
 
         else:
-            print(channelName + ' is not live')
             try:
                 onlineList.remove(channelName)
 
