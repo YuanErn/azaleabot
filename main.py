@@ -9,7 +9,9 @@ tokenFile.close()
 
 #initialisation
 bot = lightbulb.BotApp(
-    token
+    token,
+     intents=hikari.Intents.ALL_UNPRIVILEGED 
+    | hikari.Intents.MESSAGE_CONTENT,
     )
 
 @bot.listen(hikari.GuildMessageCreateEvent)
