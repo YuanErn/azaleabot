@@ -1,6 +1,7 @@
 import hikari
 import lightbulb
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
+from twitchLinks import onlineList
 
 #tokenfile
 tokenFile = open('TOKEN', 'r')
@@ -14,6 +15,7 @@ bot = lightbulb.BotApp(
     | hikari.Intents.MESSAGE_CONTENT,
     )
 
+#Prints the text to terminal for easy debugging
 @bot.listen(hikari.GuildMessageCreateEvent)
 async def print_message(event):
     print(event.content)
@@ -56,6 +58,33 @@ async def on_starting(_: hikari.StartingEvent) -> None:
     bot.d.sched = AsyncIOScheduler()
     bot.d.sched.start()
     bot.load_extensions("twitchLinks")
+
+#/nowStreaming
+@bot.command
+@lightbulb.command("nowStreaming", "Checks for the streamers currently streaming")
+@lightbulb.implements(lightbulb.SlashCommand)
+async def nowStreaming(ctx):
+    currentlyOnline = [':red_circle:',':red_circle:',':red_circle:',':red_circle:', ':red_circle:'] 
+    streamerFile = open('STREAMERS', 'r')
+    for streamers in currentlyOnline:
+        streamCheck = streamerFile.readline().strip()   
+        #we know this streamer is now online
+        if streamCheck in onlineList:
+            currentlyOnline[streamers] = ':green_circle:'
+            print(currentlyOnline)
+
+        else:
+            pass    
+    
+    #making the embed
+    embed = hikari.Embed(title="Currently Streaming! :movie_camera:", description="Here's the list of the streamers", color=0x9b59b6)
+    embed.add_field(name="{0}baglikesbags".format(currentlyOnline[0]), value="[Here is the link!](https://www.twitch.tv/baglikesbags)")
+    embed.add_field(name="{0}fin3sss".format(currentlyOnline[1]), value="[Here is the link!](https://www.twitch.tv/fin3sss)")
+    embed.add_field(name="{0}pr0phet46".format(currentlyOnline[2]), value="[Here is the link!](https://www.twitch.tv/pr0phet46)")
+    embed.add_field(name="{0}crustycorgi".format(currentlyOnline[3]), value="[Here is the link!](https://www.twitch.tv/cru3tycorgi)")
+    embed.add_field(name="{0}Adrenaline Official".format(currentlyOnline[4]), value="[Here is the link!](https://www.twitch.tv/adrenaline_esports_apac)")
+
+    await ctx.respond(embed=embed)
 
 
 
