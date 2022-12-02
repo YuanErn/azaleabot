@@ -61,4 +61,6 @@ async def on_starting(_: hikari.StartingEvent) -> None:
     bot.d.sched.start()
     bot.load_extensions("twitchLinks")
 
+
+
 bot.run()

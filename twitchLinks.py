@@ -5,7 +5,11 @@ from apscheduler.triggers.cron import CronTrigger
 
 daily_plugin = lightbulb.Plugin("Daily")
 onlineList = []
-channel = 1047747366754734140
+
+#Retrieving the channel ID
+channelFile = open('CHANNELS.txt' , 'r')
+channel = channelFile.readline().strip()
+channelFile.close()
 
 
 async def twitchCheck() -> None:
@@ -14,14 +18,17 @@ async def twitchCheck() -> None:
         channelName = streamFile.readline().strip()
         contents = requests.get('https://www.twitch.tv/' +channelName).content.decode('utf-8')
 
+        #this means theyre streaming
         if 'isLiveBroadcast' in contents: 
+            #checks if we already sent the message of them streaming
             if channelName in onlineList:
                 pass
 
             else:
                 onlineList.append(channelName)
-                await daily_plugin.app.rest.create_message(1047747366754734140, "Hello")
+                await daily_plugin.app.rest.create_message(channel, "Hello")
 
+        #theyre not streaming
         else:
             try:
                 onlineList.remove(channelName)
