@@ -61,7 +61,7 @@ async def on_starting(_: hikari.StartingEvent) -> None:
 
 #/nowStreaming
 @bot.command
-@lightbulb.command("nowStreaming", "Checks for the streamers currently streaming")
+@lightbulb.command("nowstreaming", "Checks for the streamers currently streaming")
 @lightbulb.implements(lightbulb.SlashCommand)
 async def nowStreaming(ctx):
     currentlyOnline = [':red_circle:',':red_circle:',':red_circle:',':red_circle:', ':red_circle:'] 
