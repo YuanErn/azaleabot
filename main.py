@@ -19,7 +19,7 @@ bot = lightbulb.BotApp(
     guilds
     )
 
-@bot.listen(hikari.GuildMessageCreateEvent)
+@bot.listen(hikari.MessageCreateEvent)
 async def print_message(event):
     print(event.content)
 
