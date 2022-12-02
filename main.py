@@ -46,7 +46,7 @@ async def handle_message(event):
             mediaLink = event.message.attachments[0].url
             logfile.write("{0} said| {1} |in channel:{2}, mediaAttached:{3}\n".format(str(event.author), str(event.content), str(event.channel_id), (mediaLink)))
 
-        except IndexError:       
+        except IndexError:
                 logfile.write("{0} said| {1} |in channel:{2}\n".format(str(event.author), str(event.content), str(event.channel_id)))
 
     logfile.close()
@@ -64,7 +64,7 @@ async def on_starting(_: hikari.StartingEvent) -> None:
 @lightbulb.command("nowstreaming", "Checks for the streamers currently streaming")
 @lightbulb.implements(lightbulb.SlashCommand)
 async def nowStreaming(ctx):
-    currentlyOnline = [':red_circle:',':red_circle:',':red_circle:',':red_circle:', ':red_circle:'] 
+    currentlyOnline = [':red_circle:',':red_circle:',':red_circle:',':red_circle:', ':red_circle:']
     streamerFile = open('STREAMERS', 'r')
     for streamers in range(5):
         streamCheck = streamerFile.readline().strip()   
@@ -75,7 +75,7 @@ async def nowStreaming(ctx):
 
         else:
             pass    
-    
+
     #making the embed
     embed = hikari.Embed(title="Currently Streaming! :movie_camera:", description="Here's the list of the streamers", color=0x9b59b6)
     embed.add_field(name="{0} [baglikesbags](https://www.twitch.tv/baglikesbags)".format(currentlyOnline[0]), value="desc")
