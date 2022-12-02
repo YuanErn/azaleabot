@@ -13,7 +13,7 @@ bot = lightbulb.BotApp(token)
 
 @bot.listen(hikari.GuildMessageCreateEvent)
 async def print_message(event):
-    print(event.content)
+    print(event.content , event.author)
 
 #/socials
 @bot.command
