@@ -78,11 +78,11 @@ async def nowStreaming(ctx):
     
     #making the embed
     embed = hikari.Embed(title="Currently Streaming! :movie_camera:", description="Here's the list of the streamers", color=0x9b59b6)
-    embed.add_field(name="{0}baglikesbags".format(currentlyOnline[0]), value="[Here is the link!](https://www.twitch.tv/baglikesbags)")
-    embed.add_field(name="{0}fin3sss".format(currentlyOnline[1]), value="[Here is the link!](https://www.twitch.tv/fin3sss)")
-    embed.add_field(name="{0}pr0phet46".format(currentlyOnline[2]), value="[Here is the link!](https://www.twitch.tv/pr0phet46)")
-    embed.add_field(name="{0}crustycorgi".format(currentlyOnline[3]), value="[Here is the link!](https://www.twitch.tv/cru3tycorgi)")
-    embed.add_field(name="{0}Adrenaline Official".format(currentlyOnline[4]), value="[Here is the link!](https://www.twitch.tv/adrenaline_esports_apac)")
+    embed.add_field(name="{0} [baglikesbags](https://www.twitch.tv/baglikesbags)".format(currentlyOnline[0]), value="desc")
+    embed.add_field(name="{0} [fin3sss](https://www.twitch.tv/fin3sss)".format(currentlyOnline[1]), value="desc")
+    embed.add_field(name="{0} [pr0phet46](https://www.twitch.tv/pr0phet46)".format(currentlyOnline[2]), value="desc")
+    embed.add_field(name="{0} [crustycorgi](https://www.twitch.tv/cru3tycorgi)".format(currentlyOnline[3]), value="desc")
+    embed.add_field(name="{0} [Adrenaline Official](https://www.twitch.tv/adrenaline_esports_apac)".format(currentlyOnline[4]), value="desc")
 
     await ctx.respond(embed=embed)
 
