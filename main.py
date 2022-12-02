@@ -11,7 +11,7 @@ tokenFile.close()
 bot = lightbulb.BotApp(
     token,
     intents=hikari.Intents.ALL_UNPRIVILEGED 
-    hikari.Intents.MESSAGE_CONTENT,
+    | hikari.Intents.MESSAGE_CONTENT,
     )
 
 @bot.listen(hikari.GuildMessageCreateEvent)
