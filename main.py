@@ -3,6 +3,11 @@ import lightbulb
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from twitchLinks import onlineList
 
+#tokenfile
+tokenFile = open('TOKEN', 'r')
+token = tokenFile.readline()
+tokenFile.close()
+
 #guildfile
 guildFile = open('GUILDS', 'r')
 guilds  = guildFile.readline()
@@ -10,7 +15,7 @@ guildFile.close()
 
 #initialisation
 bot = lightbulb.BotApp(
-    secrets.TOKEN,
+    token,
     guilds
     )
 
