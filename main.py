@@ -10,7 +10,7 @@ guildFile.close()
 
 #initialisation
 bot = lightbulb.BotApp(
-    TOKEN,
+    secrets.TOKEN,
     guilds
     )
 
