@@ -7,7 +7,7 @@ daily_plugin = lightbulb.Plugin("Daily")
 onlineList = []
 
 #Retrieving the channel ID
-channelFile = open('CHANNELS.txt' , 'r')
+channelFile = open('CHANNELS' , 'r')
 channel = channelFile.readline().strip()
 channelFile.close()
 
