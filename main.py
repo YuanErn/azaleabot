@@ -1,6 +1,7 @@
 import hikari
 import lightbulb
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
+from twitchLinks import onlineList
 
 #tokenfile
 tokenFile = open('TOKEN', 'r')
@@ -39,17 +40,20 @@ async def ping(ctx):
 @bot.listen(hikari.GuildMessageCreateEvent)
 async def handle_message(event):
     logfile = open("chatlogging.txt", "a")
-    if event.content == None:
-        mediaLink = event.message.attachments[0].url
-        logfile.write("{0} said| {1} |in channel:{2}\n".format(str(event.author), (mediaLink), str(event.channel_id)))
-
-    else:
-        try:
+    if event.author != 'Azalea#7263':
+        if event.content == None:
             mediaLink = event.message.attachments[0].url
-            logfile.write("{0} said| {1} |in channel:{2}, mediaAttached:{3}\n".format(str(event.author), str(event.content), str(event.channel_id), (mediaLink)))
+            logfile.write("{0} said| {1} |in channel:{2}\n".format(str(event.author), (mediaLink), str(event.channel_id)))
 
-        except IndexError:       
-                logfile.write("{0} said| {1} |in channel:{2}\n".format(str(event.author), str(event.content), str(event.channel_id)))
+        else:
+            try:
+                mediaLink = event.message.attachments[0].url
+                logfile.write("{0} said| {1} |in channel:{2}, mediaAttached:{3}\n".format(str(event.author), str(event.content), str(event.channel_id), (mediaLink)))
+
+            except IndexError:       
+                    logfile.write("{0} said| {1} |in channel:{2}\n".format(str(event.author), str(event.content), str(event.channel_id)))
+    else:
+        pass
 
     logfile.close()
 
@@ -60,6 +64,18 @@ async def on_starting(_: hikari.StartingEvent) -> None:
     bot.d.sched = AsyncIOScheduler()
     bot.d.sched.start()
     bot.load_extensions("twitchLinks")
+
+#/nowStreaming
+# @bot.command
+# @lightbulb.command('nowStreaming', 'Shows the streamers currently online')
+# @lightbulb.implements(lightbulb.SlashCommand)
+# async def ping(ctx):
+#     #this means there are streamers online 
+#     if len(onlineList) != 0:
+
+
+    
+#     await ctx.respond(embed=embed)
 
 
 
