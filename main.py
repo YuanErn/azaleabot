@@ -41,7 +41,7 @@ async def ping(ctx):
 async def handle_message(event):
     logfile = open("chatlogging.txt", "a")
     if event.author != 'Azalea#7263':
-        if event.content == None:
+        if event.content != None:
             mediaLink = event.message.attachments[0].url
             logfile.write("{0} said| {1} |in channel:{2}\n".format(str(event.author), (mediaLink), str(event.channel_id)))
 
