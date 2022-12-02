@@ -23,7 +23,7 @@ bot = lightbulb.BotApp(
 async def print_message(event):
     print(event.content)
 
-/socials
+#/socials
 @bot.command
 @lightbulb.command('socials', 'Displays the socials')
 @lightbulb.implements(lightbulb.SlashCommand)
