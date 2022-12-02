@@ -70,7 +70,7 @@ async def nowStreaming(ctx):
         streamCheck = streamerFile.readline().strip()   
         #we know this streamer is now online
         if streamCheck in onlineList:
-            currentlyOnline[streamers] = ':green_circle:'
+            currentlyOnline[int(streamers)] = ':green_circle:'
             print(currentlyOnline)
 
         else:
