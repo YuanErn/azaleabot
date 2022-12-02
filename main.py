@@ -1,7 +1,6 @@
 import hikari
 import lightbulb
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
-from twitchLinks import onlineList
 
 #tokenfile
 tokenFile = open('TOKEN', 'r')
