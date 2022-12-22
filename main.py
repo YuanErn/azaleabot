@@ -59,6 +59,7 @@ async def on_starting(_: hikari.StartingEvent) -> None:
     bot.d.sched = AsyncIOScheduler()
     bot.d.sched.start()
     bot.load_extensions("twitchLinks")
+    print("Bot Online!")
 
 #/nowStreaming
 @bot.command
