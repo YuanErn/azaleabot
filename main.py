@@ -72,7 +72,6 @@ async def nowStreaming(ctx):
         #we know this streamer is now online
         if streamCheck in onlineList:
             currentlyOnline[streamers] = ':green_circle:'
-            print(currentlyOnline)
 
         else:
             pass    
