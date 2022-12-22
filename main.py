@@ -83,7 +83,7 @@ async def nowStreaming(ctx):
     embed.add_field(name="{0} [fin3sss] (https://www.twitch.tv/fin3sss)".format(currentlyOnline[1]), value="desc")
     embed.add_field(name="{0} [pr0phet46] (https://www.twitch.tv/pr0phet46)".format(currentlyOnline[2]), value="Yo my ADL peepers, come and hope on to the stream and enjoy the fun (Assuming Im not already angry from rank  heh T_T)")
     embed.add_field(name="{0} [crustycorgi] (https://www.twitch.tv/cru3tycorgi)".format(currentlyOnline[3]), value="desc")
-    embed.add_field(name="{0} [Adrenaline Official] (https://www.twitch.tv/adrenaline_esports_apac)".format(currentlyOnline[4]), value="Main channel for Adrenaline Livestreams")
+    embed.add_field(name="{0} [Adrenaline Official] (https://www.twitch.tv/adrenaline_esports_apac)".format(currentlyOnline[4]), value="Main channel for Adrenaline livestreams")
 
     await ctx.respond(embed=embed)
 
