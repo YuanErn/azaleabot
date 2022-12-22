@@ -26,7 +26,7 @@ async def twitchCheck() -> None:
 
             else:
                 onlineList.append(channelName)
-                await daily_plugin.app.rest.create_message(channel, channelName + "Come join in the chaos! \n https://www.twitch.tv/" +channelName + "is now streaming!")
+                await daily_plugin.app.rest.create_message(channel, "Come join in the chaos! \n https://www.twitch.tv/" +channelName + " is now streaming!")
 
         #theyre not streaming
         else:
