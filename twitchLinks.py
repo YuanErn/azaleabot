@@ -19,14 +19,14 @@ async def twitchCheck() -> None:
         contents = requests.get('https://www.twitch.tv/' +channelName).content.decode('utf-8')
 
         #this means theyre streaming
-        if 'isLiveBroadcast' in contents: 
+        if 'isLiveBroadcast' in contents:
             #checks if we already sent the message of them streaming
             if channelName in onlineList:
                 pass
 
             else:
                 onlineList.append(channelName)
-                await daily_plugin.app.rest.create_message(channel, "Hello")
+                await daily_plugin.app.rest.create_message(channel, channelName + " is now streaming")
 
         #theyre not streaming
         else:
