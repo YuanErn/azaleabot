@@ -80,7 +80,7 @@ async def nowStreaming(ctx):
     #embed for the command
     embed = hikari.Embed(title="Currently Streaming! :movie_camera:", description="Here's the list of the streamers", color=0x9b59b6)
     embed.add_field(name="{0} [baglikesbags] (https://www.twitch.tv/baglikesbags)".format(currentlyOnline[0]), value="Hi, I am Gabriel, a content creator for Adrenaline and mainly enjoy playing horror, fps, and adventure. If you enjoy these genres come along and enjoy my streams in your free time!")
-    embed.add_field(name="{0} [fin3sss] (https://www.twitch.tv/fin3sss)".format(currentlyOnline[1]), value="desc")
+    embed.add_field(name="{0} [fin3sss] (https://www.twitch.tv/fin3sss)".format(currentlyOnline[1]), value="")
     embed.add_field(name="{0} [pr0phet46] (https://www.twitch.tv/pr0phet46)".format(currentlyOnline[2]), value="Yo my ADL peepers, come and hope on to the stream and enjoy the fun (Assuming Im not already angry from rank  heh T_T)")
     embed.add_field(name="{0} [crustycorgi] (https://www.twitch.tv/cru3tycorgi)".format(currentlyOnline[3]), value="A competitive gamer that plays too much and has a dream of one day being a successful content creator , feel free to drop by and chat.")
     embed.add_field(name="{0} [Adrenaline Official] (https://www.twitch.tv/adrenaline_esports_apac)".format(currentlyOnline[4]), value="Main channel for Adrenaline livestreams")
