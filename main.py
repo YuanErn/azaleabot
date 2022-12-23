@@ -66,13 +66,13 @@ async def on_starting(_: hikari.StartingEvent) -> None:
 @lightbulb.command("nowstreaming", "Checks for the streamers currently streaming")
 @lightbulb.implements(lightbulb.SlashCommand)
 async def nowStreaming(ctx):
-    currentlyOnline = [':red_circle:',':red_circle:',':red_circle:',':red_circle:', ':red_circle:']
+    currentlyOnline = [':offlinestatus:',':offlinestatus:',':offlinestatus:',':offlinestatus:', ':offlinestatus:']
     streamerFile = open('STREAMERS', 'r')
     for streamers in range(5):
         streamCheck = streamerFile.readline().strip()   
         #we know this streamer is now online
         if streamCheck in onlineList:
-            currentlyOnline[streamers] = ':green_circle:'
+            currentlyOnline[streamers] = ':onlinestatus:'
 
         else:
             pass    
