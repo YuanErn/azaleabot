@@ -3,24 +3,24 @@ import lightbulb
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from twitchLinks import onlineList
 
-#tokenfile
+# tokenfile
 tokenFile = open('TOKEN', 'r')
 token = tokenFile.readline()
 tokenFile.close()
 
-#initialisation
+# initialisation
 bot = lightbulb.BotApp(
     token,
     intents=hikari.Intents.ALL_UNPRIVILEGED 
     | hikari.Intents.MESSAGE_CONTENT,
     )
 
-#Prints the text to terminal for easy debugging
+# Prints the text to terminal for easy debugging
 @bot.listen(hikari.GuildMessageCreateEvent)
 async def print_message(event):
     print(event.content)
 
-#/socials
+# /socials
 @bot.command
 @lightbulb.command('socials', 'Displays the socials')
 @lightbulb.implements(lightbulb.SlashCommand)
@@ -55,8 +55,8 @@ async def handle_message(event):
     else:
         pass
 
-#Could improve the CPU usage by using push methods instead of pulling from the Twitch API every min, too lazy to change the code since it works now
-#Twitch implementation
+# Could improve the CPU usage by using push methods instead of pulling from the Twitch API every min, too lazy to change the code since it works now
+# Twitch implementation
 @bot.listen(hikari.StartingEvent)
 async def on_starting(_: hikari.StartingEvent) -> None:
     # This event fires once, while the BotApp is starting.
@@ -65,7 +65,7 @@ async def on_starting(_: hikari.StartingEvent) -> None:
     bot.load_extensions("twitchLinks")
     print("Bot Online!")
 
-#/nowStreaming
+# /nowStreaming
 @bot.command
 @lightbulb.command("nowstreaming", "Checks for the streamers currently streaming")
 @lightbulb.implements(lightbulb.SlashCommand)
@@ -74,14 +74,14 @@ async def nowStreaming(ctx):
     streamerFile = open('STREAMERS', 'r')
     for streamers in range(5):
         streamCheck = streamerFile.readline().strip()   
-        #we know this streamer is now online
+        # we know this streamer is now online
         if streamCheck in onlineList:
             currentlyOnline[streamers] = '<:onlinestatus:1055690106377343066>'
 
         else:
             pass    
 
-    #embed for the command
+    # embed for the command
     embed = hikari.Embed(title="Now Streaming! :movie_camera:", description="Here's the list of the streamers", color=0x9b59b6)
     embed.add_field(name="{0} [baglikesbags] (https://www.twitch.tv/baglikesbags)".format(currentlyOnline[0]), value="Hi, I am Gabriel, a content creator for Adrenaline and mainly enjoy playing horror, fps, and adventure. If you enjoy these genres come along and enjoy my streams in your free time!")
     embed.add_field(name="{0} [fin3sss] (https://www.twitch.tv/fin3sss)".format(currentlyOnline[1]), value="My name is Brandon also known as 'Fin3Ss' (Finesse). In the year of 2022 I am 16. I am just an ordinary cool guy that plays every game and its good at it :)")
