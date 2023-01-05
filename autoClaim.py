@@ -7,7 +7,7 @@ from apscheduler.triggers.cron import CronTrigger
 daily_plugin = lightbulb.Plugin("Daily")
 onlineList = []
 
-def autoClaim():
+async def autoClaim():
     cookies = {"ltuid": 25089082, "ltoken": "4P3cU29tyXw2pVSS01MukdJhvSPF16GoGi7gQJxF"}
     client = genshin.Client(cookies, game=genshin.Game.GENSHIN)
 
