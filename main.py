@@ -2,6 +2,8 @@ import hikari
 import lightbulb
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from twitchLinks import onlineList
+import genshin  
+from apscheduler.triggers.cron import CronTrigger
 
 # tokenfile
 tokenFile = open('TOKEN', 'r')
@@ -19,6 +21,19 @@ bot = lightbulb.BotApp(
 @bot.listen(hikari.GuildMessageCreateEvent)
 async def print_message(event):
     print(event.content)
+
+daily_plugin = lightbulb.Plugin("Daily")
+
+# Could improve the CPU usage by using push methods instead of pulling from the Twitch API every min, too lazy to change the code since it works now
+# Twitch implementation
+@bot.listen(hikari.StartingEvent)
+async def on_starting(_: hikari.StartingEvent) -> None:
+    # This event fires once, while the BotApp is starting.
+    bot.d.sched = AsyncIOScheduler()
+    bot.d.sched.start()
+    bot.load_extensions("twitchLinks")
+    print("Bot Online!")
+
 
 # /socials
 @bot.command
@@ -55,15 +70,7 @@ async def handle_message(event):
     else:
         pass
 
-# Could improve the CPU usage by using push methods instead of pulling from the Twitch API every min, too lazy to change the code since it works now
-# Twitch implementation
-@bot.listen(hikari.StartingEvent)
-async def on_starting(_: hikari.StartingEvent) -> None:
-    # This event fires once, while the BotApp is starting.
-    bot.d.sched = AsyncIOScheduler()
-    bot.d.sched.start()
-    bot.load_extensions("twitchLinks", "autoClaim")
-    print("Bot Online!")
+
 
 # /nowStreaming
 @bot.command
@@ -90,7 +97,6 @@ async def nowStreaming(ctx):
     embed.add_field(name="{0} [Adrenaline Official] (https://www.twitch.tv/adrenaline_esports_apac)".format(currentlyOnline[4]), value="Main channel for Adrenaline livestreams")
 
     await ctx.respond(embed=embed)
-
 
 
 bot.run()
