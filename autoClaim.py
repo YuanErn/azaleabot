@@ -25,7 +25,7 @@ autoClaim()
 @daily_plugin.listener(hikari.StartedEvent)
 async def on_started(_: hikari.StartedEvent) -> None:
     # This event fires once, when the BotApp is fully started.
-    daily_plugin.app.d.sched.add_job(autoClaim, CronTrigger(minute="0 0 12 * * ?"))
+    daily_plugin.app.d.sched.add_job(autoClaim, CronTrigger("0 0 12 * * ?"))
 
 def load(bot: lightbulb.BotApp) -> None:
     bot.add_plugin(daily_plugin)
