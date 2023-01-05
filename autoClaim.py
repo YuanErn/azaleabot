@@ -13,7 +13,7 @@ async def autoClaim():
 
     # claim daily reward
     try:
-        reward = client.claim_daily_reward()
+        reward = await client.claim_daily_reward()
     except genshin.AlreadyClaimed:
         print("Daily reward already claimed")
     else:
