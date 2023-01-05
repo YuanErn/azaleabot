@@ -37,18 +37,22 @@ async def ping(ctx):
 @bot.listen(hikari.GuildMessageCreateEvent)
 async def handle_message(event):
     logfile = open("chatlogging.txt", "a")
-    if event.content == None:
-        mediaLink = event.message.attachments[0].url
-        logfile.write("{0} said| {1} |in channel:{2}\n".format(str(event.author), (mediaLink), str(event.channel_id)))
+    if event.guild_id == 1020319387678425108:
+        if event.content == None:
+            mediaLink = event.message.attachments[0].url
+            logfile.write("{0} said| {1} |in channel:{2}\n".format(str(event.author), (mediaLink), str(event.channel_id)))
+
+        else:
+            try:
+                mediaLink = event.message.attachments[0].url
+                logfile.write("{0} said| {1} |in channel:{2}, mediaAttached:{3}\n".format(str(event.author), str(event.content), str(event.channel_id), (mediaLink)))
+
+            except IndexError:
+                    logfile.write("{0} said| {1} |in channel:{2}\n".format(str(event.author), str(event.content), str(event.channel_id)))
 
     else:
-        try:
-            mediaLink = event.message.attachments[0].url
-            logfile.write("{0} said| {1} |in channel:{2}, mediaAttached:{3}\n".format(str(event.author), str(event.content), str(event.channel_id), (mediaLink)))
-
-        except IndexError:
-                logfile.write("{0} said| {1} |in channel:{2}\n".format(str(event.author), str(event.content), str(event.channel_id)))
-
+        pass
+    
     logfile.close()
 
 #Could improve the CPU usage by using push methods instead of pulling from the Twitch API every min, too lazy to change the code since it works now
