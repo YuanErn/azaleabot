@@ -62,7 +62,7 @@ async def on_starting(_: hikari.StartingEvent) -> None:
     # This event fires once, while the BotApp is starting.
     bot.d.sched = AsyncIOScheduler()
     bot.d.sched.start()
-    bot.load_extensions("twitchLinks")
+    bot.load_extensions("twitchLinks", "autoClaim")
     print("Bot Online!")
 
 # /nowStreaming
