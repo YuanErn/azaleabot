@@ -19,4 +19,4 @@ def check_content(content):
         if category[1] > 0.2:
             flagged = True
 
-    return categoryScores, flagged
+    return flagged
