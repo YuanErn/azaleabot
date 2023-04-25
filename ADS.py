@@ -12,7 +12,7 @@ def check_content(content):
     input = content
     )
 
-    categories = response["results"][0]["category_scores"]
+    categories = response["results"]["category_scores"]
     flagged = response["results"][0]["flagged"]
 
     return categories, flagged
