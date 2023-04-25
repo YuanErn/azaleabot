@@ -14,7 +14,7 @@ def check_content(content):
 
     categories = response["results"][0]["category_scores"]
     for category in categories:
-        if category > 0.1:
+        if category[category] > 0.1:
             flagged = True
 
     return categories, flagged
