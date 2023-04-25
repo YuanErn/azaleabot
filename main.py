@@ -4,23 +4,16 @@ from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from twitchLinks import onlineList
 from apscheduler.triggers.cron import CronTrigger
 import openai
-import os
+from ADS import check_content
 
 # tokenfile
 tokenFile = open('TOKEN', 'r')
 token = tokenFile.readline()
 tokenFile.close()
 
-# ChatGPT API key and setup
-keyFile = open('KEY', 'r')
-key = keyFile.readline()
-openai.api_key = os.environ[key]
-keyFile.close()
-
-model = "gpt-3.5-turbo" # Model of ChatGPT being used
-moderationModel = "text-moderation-latest"  # This is the 'Moderation' model from OpenAI
-temperature = 0.7 # This is the 'creativity' level of the engine, higher level means higher creativity
-max_tokens = 1024
+apiKey_file = open("API.txt", "r")
+openai.api_key = apiKey_file.readline()
+apiKey_file.close()
 
 # initialisation
 bot = lightbulb.BotApp(
@@ -46,20 +39,7 @@ async def on_starting(_: hikari.StartingEvent) -> None:
     bot.load_extensions("twitchLinks", "autoClaim","Active Defense System")
     print("Bot Online!")
 
-# /socials
-@bot.command
-@lightbulb.command('socials', 'Displays the socials')
-@lightbulb.implements(lightbulb.SlashCommand)
-async def ping(ctx):
-    embed = hikari.Embed(title="Socials!", description="Here are the socials :)", color=0x9b59b6)
-    embed.add_field(name="Tiktok", value="[Here is the link!](https://www.tiktok.com/@adrenaline_esports)")
-    embed.add_field(name="Instagram", value="[Here is the link!](https://www.instagram.com/adll.esports)")
-    embed.add_field(name="Twitter", value="[Here is the link!](https://twitter.com/ADL_Esports)")
-    embed.add_field(name="Twitch", value="[Here is the link!](https://www.twitch.tv/adrenaline_esports_apac)")
-    embed.add_field(name="Facebook", value="[Here is the link!](https://www.facebook.com/profile.php?id=100086242737895)")
-    await ctx.respond(embed=embed)
-
-#logs the server's chats
+# logs the server's chats
 @bot.listen(hikari.GuildMessageCreateEvent)
 async def handle_message(event):
     logfile = open("chatlogging.txt", "a")
@@ -81,6 +61,17 @@ async def handle_message(event):
         pass
     
     logfile.close()
+
+# Content Filtering
+@bot.listen(hikari.GuildMessageCreateEvent)
+async def handle_message(event):
+    if event.guild_id == 999584580019441728:
+        if check_content(event.content).flagged == True:
+            await event.message.delete()
+            await event.message.respond("@" + event.author + "Your message was deleted because it was flagged by the system.")
+
+    else:
+        pass
 
 
 # /nowStreaming
@@ -109,5 +100,17 @@ async def nowStreaming(ctx):
 
     await ctx.respond(embed=embed)
 
+# /socials
+@bot.command
+@lightbulb.command('socials', 'Displays the socials')
+@lightbulb.implements(lightbulb.SlashCommand)
+async def ping(ctx):
+    embed = hikari.Embed(title="Socials!", description="Here are the socials :)", color=0x9b59b6)
+    embed.add_field(name="Tiktok", value="[Here is the link!](https://www.tiktok.com/@adrenaline_esports)")
+    embed.add_field(name="Instagram", value="[Here is the link!](https://www.instagram.com/adll.esports)")
+    embed.add_field(name="Twitter", value="[Here is the link!](https://twitter.com/ADL_Esports)")
+    embed.add_field(name="Twitch", value="[Here is the link!](https://www.twitch.tv/adrenaline_esports_apac)")
+    embed.add_field(name="Facebook", value="[Here is the link!](https://www.facebook.com/profile.php?id=100086242737895)")
+    await ctx.respond(embed=embed)
 
 bot.run()
