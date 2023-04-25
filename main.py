@@ -67,7 +67,7 @@ async def handle_message(event):
 async def handle_message(event):
     if event.guild_id == 999584580019441728 and check_content(event.content) == True:
         await event.message.delete()
-        await event.message.respond("@{event.author.id}" + " Your message was deleted because it was flagged by the system.")
+        await event.message.respond("@{event.author.id}" + " your message was deleted because it was flagged by the system.")
 
     else:
         pass
