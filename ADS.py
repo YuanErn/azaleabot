@@ -1,5 +1,6 @@
 import hikari 
 import lightbulb
+import json
 import openai
 
 secret_file = open("API.txt", "r")
@@ -12,7 +13,8 @@ def check_content(content):
     input = content
     )
 
-    categoryScores = response["results"][0]["category_scores"]
+    categoryScores = json.loads(response["results"][0]["category_scores"])[0][0]
+
 
 
     return categoryScores
