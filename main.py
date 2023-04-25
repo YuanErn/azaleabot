@@ -66,9 +66,9 @@ async def handle_message(event):
 @bot.listen(hikari.GuildMessageCreateEvent)
 async def handle_message(event):
     if event.guild_id == 999584580019441728:
-        if check_content(event.content).flagged == True:
-            await event.message.delete()
-            await event.message.respond("@" + event.author + "Your message was deleted because it was flagged by the system.")
+        print(check_content(event.content))
+            # await event.message.delete()
+            # await event.message.respond("@" + event.author + "Your message was deleted because it was flagged by the system.")
 
     else:
         pass
