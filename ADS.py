@@ -13,8 +13,8 @@ def check_content(content):
     input = content
     )
 
-    categoryScores = json.loads(response["results"][0]["category_scores"])
+    categoryScores = list(response["results"][0]["category_scores"].items())
 
 
 
-    return categoryScores[0][0]
+    return categoryScores
