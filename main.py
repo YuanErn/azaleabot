@@ -2,25 +2,40 @@ import hikari
 import lightbulb
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from twitchLinks import onlineList
+import genshin  
+from apscheduler.triggers.cron import CronTrigger
 
-#tokenfile
+# tokenfile
 tokenFile = open('TOKEN', 'r')
 token = tokenFile.readline()
 tokenFile.close()
 
-#initialisation
+# initialisation
 bot = lightbulb.BotApp(
     token,
     intents=hikari.Intents.ALL_UNPRIVILEGED 
     | hikari.Intents.MESSAGE_CONTENT,
     )
 
-#Prints the text to terminal for easy debugging
+# Prints the text to terminal for easy debugging
 @bot.listen(hikari.GuildMessageCreateEvent)
 async def print_message(event):
     print(event.content)
 
-#/socials
+daily_plugin = lightbulb.Plugin("Daily")
+
+# Could improve the CPU usage by using push methods instead of pulling from the Twitch API every min, too lazy to change the code since it works now
+# Twitch implementation
+@bot.listen(hikari.StartingEvent)
+async def on_starting(_: hikari.StartingEvent) -> None:
+    # This event fires once, while the BotApp is starting.
+    bot.d.sched = AsyncIOScheduler()
+    bot.d.sched.start()
+    bot.load_extensions("twitchLinks", "autoClaim")
+    print("Bot Online!")
+
+
+# /socials
 @bot.command
 @lightbulb.command('socials', 'Displays the socials')
 @lightbulb.implements(lightbulb.SlashCommand)
@@ -36,8 +51,13 @@ async def ping(ctx):
 #logs the server's chats
 @bot.listen(hikari.GuildMessageCreateEvent)
 async def handle_message(event):
+<<<<<<< HEAD
     logfile = open("chatlogging.txt", "a")
     if event.guild_id == 1020319387678425108:
+=======
+    if event.guild_id == 1020319387678425108:
+        logfile = open("chatlogging.txt", "a")
+>>>>>>> 0b5037dd8e5a1dcaaa89a3f0aa9cf6e4ebf40ef1
         if event.content == None:
             mediaLink = event.message.attachments[0].url
             logfile.write("{0} said| {1} |in channel:{2}\n".format(str(event.author), (mediaLink), str(event.channel_id)))
@@ -49,23 +69,23 @@ async def handle_message(event):
 
             except IndexError:
                     logfile.write("{0} said| {1} |in channel:{2}\n".format(str(event.author), str(event.content), str(event.channel_id)))
+<<<<<<< HEAD
 
     else:
         pass
     
     logfile.close()
+=======
 
-#Could improve the CPU usage by using push methods instead of pulling from the Twitch API every min, too lazy to change the code since it works now
-#Twitch implementation
-@bot.listen(hikari.StartingEvent)
-async def on_starting(_: hikari.StartingEvent) -> None:
-    # This event fires once, while the BotApp is starting.
-    bot.d.sched = AsyncIOScheduler()
-    bot.d.sched.start()
-    bot.load_extensions("twitchLinks")
-    print("Bot Online!")
+        logfile.close()
 
-#/nowStreaming
+    else:
+        pass
+
+
+>>>>>>> 0b5037dd8e5a1dcaaa89a3f0aa9cf6e4ebf40ef1
+
+# /nowStreaming
 @bot.command
 @lightbulb.command("nowstreaming", "Checks for the streamers currently streaming")
 @lightbulb.implements(lightbulb.SlashCommand)
@@ -74,14 +94,14 @@ async def nowStreaming(ctx):
     streamerFile = open('STREAMERS', 'r')
     for streamers in range(5):
         streamCheck = streamerFile.readline().strip()   
-        #we know this streamer is now online
+        # we know this streamer is now online
         if streamCheck in onlineList:
             currentlyOnline[streamers] = '<:onlinestatus:1055690106377343066>'
 
         else:
             pass    
 
-    #embed for the command
+    # embed for the command
     embed = hikari.Embed(title="Now Streaming! :movie_camera:", description="Here's the list of the streamers", color=0x9b59b6)
     embed.add_field(name="{0} [baglikesbags] (https://www.twitch.tv/baglikesbags)".format(currentlyOnline[0]), value="Hi, I am Gabriel, a content creator for Adrenaline and mainly enjoy playing horror, fps, and adventure. If you enjoy these genres come along and enjoy my streams in your free time!")
     embed.add_field(name="{0} [fin3sss] (https://www.twitch.tv/fin3sss)".format(currentlyOnline[1]), value="My name is Brandon also known as 'Fin3Ss' (Finesse). In the year of 2022 I am 16. I am just an ordinary cool guy that plays every game and its good at it :)")
@@ -90,7 +110,6 @@ async def nowStreaming(ctx):
     embed.add_field(name="{0} [Adrenaline Official] (https://www.twitch.tv/adrenaline_esports_apac)".format(currentlyOnline[4]), value="Main channel for Adrenaline livestreams")
 
     await ctx.respond(embed=embed)
-
 
 
 bot.run()
