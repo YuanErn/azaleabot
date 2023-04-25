@@ -36,7 +36,7 @@ async def on_starting(_: hikari.StartingEvent) -> None:
     # This event fires once, while the BotApp is starting.
     bot.d.sched = AsyncIOScheduler()
     bot.d.sched.start()
-    bot.load_extensions("twitchLinks", "autoClaim","Active Defense System")
+    bot.load_extensions("twitchLinks", "autoClaim","ADS")
     print("Bot Online!")
 
 # logs the server's chats
