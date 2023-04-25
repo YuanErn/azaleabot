@@ -12,9 +12,7 @@ def check_content(content):
     input = content
     )
 
-    categories = response["results"][0]["category_scores"]
-    for category in categories:
-        if category[category] > 0.1:
-            flagged = True
+    categoryScores = response["results"][0]["category_scores"]
 
-    return categories, flagged
+
+    return categoryScores
