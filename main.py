@@ -2,13 +2,25 @@ import hikari
 import lightbulb
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from twitchLinks import onlineList
-import genshin  
 from apscheduler.triggers.cron import CronTrigger
+import openai
+import os
 
 # tokenfile
 tokenFile = open('TOKEN', 'r')
 token = tokenFile.readline()
 tokenFile.close()
+
+# ChatGPT API key and setup
+keyFile = open('KEY', 'r')
+key = keyFile.readline()
+openai.api_key = os.environ[key]
+keyFile.close()
+
+model = "gpt-3.5-turbo" # Model of ChatGPT being used
+moderationModel = "text-moderation-latest"  # This is the 'Moderation' model from OpenAI
+temperature = 0.7 # This is the 'creativity' level of the engine, higher level means higher creativity
+max_tokens = 1024
 
 # initialisation
 bot = lightbulb.BotApp(
@@ -31,9 +43,8 @@ async def on_starting(_: hikari.StartingEvent) -> None:
     # This event fires once, while the BotApp is starting.
     bot.d.sched = AsyncIOScheduler()
     bot.d.sched.start()
-    bot.load_extensions("twitchLinks", "autoClaim")
+    bot.load_extensions("twitchLinks", "autoClaim","Active Defense System")
     print("Bot Online!")
-
 
 # /socials
 @bot.command
@@ -69,8 +80,6 @@ async def handle_message(event):
 
     else:
         pass
-
-
 
 # /nowStreaming
 @bot.command
