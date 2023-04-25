@@ -8,7 +8,7 @@ secret_file.close()
 
 def check_content(content):
     response = openai.Moderation.create(
-    model = "text-filter-v6",
+    model = "text-moderation-latest",
     input = content
     )
 
